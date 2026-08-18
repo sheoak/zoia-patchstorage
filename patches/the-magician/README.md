@@ -132,8 +132,9 @@ reverse.
   or swap the Hall reverb for a lighter one. Adding modules on top may push it over —
   trim elsewhere first.
 - **MIDI:** most parameters are mapped to MIDI CC (channel 12) for external control.
-- **Stereo:** everything is stereo — use stereo I/O for the full effect (mono in will
-  leave one side of the stereo field empty on the direct paths).
+- **Stereo:** everything is stereo, and a single cable in works — the ZOIA copies the
+  left input to the right, so both sides are fed. Plug in stereo and the two sides stay
+  independent, which is what the split reverse and the two loopers are for.
 
 ## License
 
