@@ -24,7 +24,7 @@ way to end up wondering where a patch went.
 | [The Hierophant](patches/the-hierophant) | Mono, plus the original |
 | [The Hierophant MKII](patches/the-hierophant-mk2) | Stereo |
 | [The Lovers](patches/the-lovers) | Chorus and vibrato |
-| [The World](patches/the-world) | Standard and tape |
+| [The World](patches/the-world) | Five effects and two meters |
 
 `main` carries the patches that are played. One still being built lives on its own
 branch until it is — the open draft pull requests are what is in progress.
