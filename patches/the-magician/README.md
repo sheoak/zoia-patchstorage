@@ -95,7 +95,7 @@ its on/off in the last column.
 | Row | Colour | Cells |
 | --- | --- | --- |
 | Looper | aqua | `L.Level`, `L.Start`, `L.Length`, `L.Clock` — `L.RevL`, `L.RevR`, `L.FX` |
-| Granular | sky | `G.Mix`, `G.Pos`, `G.Length`, `G.Pitch`, `G.Density`, `G.Texture` — `G.Freeze`, `G.On` |
+| Granular | peach | `G.Mix`, `G.Pos`, `G.Length`, `G.Pitch`, `G.Density`, `G.Texture` — `G.Freeze`, `G.On` |
 | Delay | pink | `D.Mix`, `D.FB`, `D.Time`, `D.Depth`, `D.Rate` — `D.On` |
 | Reverb | purple | `R.Mix`, `R.Decay`, `R.Low`, `R.High` — `R.On` |
 | Sends | mango / aqua | `FXLive Send`, `FXLoop Send` — `FX On` |
