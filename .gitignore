@@ -1,0 +1,14 @@
+# The editing skill and its notes stay out of the repo.
+.claude/
+CLAUDE.md
+
+# Decoded patches are derived from the .bin, and huge.
+*.json
+
+# Backups the editor leaves behind.
+*.bak
+*.bak-*
+*.pre-*.bak
+
+.DS_Store
+__pycache__/

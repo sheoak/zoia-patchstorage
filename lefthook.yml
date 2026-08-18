@@ -1,0 +1,19 @@
+# Whatever CI checks, the hooks check first — a red pipeline is a slow way to
+# learn that a `.bin` came off the card short.
+#
+# There is no Node here, so the checks are the repo's own Python rather than
+# commitlint. Install the runner once with `brew install lefthook`, then
+# `lefthook install` in this directory.
+
+pre-commit:
+  jobs:
+    - name: patches
+      glob: 'patches/**'
+      run: python3 tools/check.py
+
+commit-msg:
+  jobs:
+    # release.py reads these to decide what moves, so a message it cannot parse
+    # is a version that never happens.
+    - name: conventional
+      run: python3 tools/release.py --lint-msg {1}
