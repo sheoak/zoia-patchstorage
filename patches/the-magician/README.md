@@ -94,11 +94,11 @@ its toggle across the row; the last column holds whatever that block can do live
 
 | Row | Colour | Cells |
 | --- | --- | --- |
-| Clock menu | magenta / surf | eight loop speeds, dark until the menu is opened |
-| Clock menu | green / white | `Clock Menu` launcher, `Clock: reset` |
+| Clock menu | sky / surf | eight loop speeds, dark until the menu is opened |
+| Clock menu | mango / white | `Clock Menu` launcher, `Clock: reset` |
 | Looper | aqua | `L.FX` — `L.Level`, `L.Start`, `L.Clock`, `L.Length` — `L.RevL`, `L.RevR`, `FXLoop Send` |
-| Granular | peach | `G.On` — `G.Mix`, `G.Pos`, `G.Pitch`, `G.Length`, `G.Texture`, `G.Density` — `G.Freeze` |
-| FX | pink / purple | `FX On` — `D.Mix`, `D.FB`, `D.Time`, `D.Depth`, `R.Mix`, `R.Decay` — `FXLive Send` |
+| Granular | blue | `G.On` — `G.Mix`, `G.Pos`, `G.Pitch`, `G.Length`, `G.Texture`, `G.Density` — `G.Freeze` |
+| FX | magenta / purple | `FX On` — `D.Mix`, `D.FB`, `D.Time`, `D.Depth`, `R.Mix`, `R.Decay` — `FXLive Send` |
 
 The delay and the reverb share one row, one toggle and one send. That is what freed
 the row the clock menu now sits on.
@@ -111,6 +111,11 @@ The three toggles in column 1 are all orange, dim when the block is out and brig
 it is in. `L.FX` carries a second job: a `CV Invert` on the record state subtracts 5%
 from its colour while the looper is running, which drops it one band into red. It is the
 record indicator as well as the loop-FX toggle.
+
+The knobs run **aqua → blue → magenta/purple** down the page, in the order the signal
+meets them. The delay and the reverb are one band apart on purpose: one row, one bus,
+one toggle, one send. Around them, green is anything held or struck — `L.RevL`, `L.RevR`,
+`G.Freeze` — and peach is a level going to the shared bus.
 
 ## The clock menu
 
