@@ -151,10 +151,8 @@ moved last owns the speed.
 | **Mid** (Play) | Playback on/off | Clear / reset the loop |
 | **Right** (Wet) | FX bus on/off | Loop FX on/off |
 
-The left switch has no hold. The tap-or-hold detector on the other two is an `ADSR`
-with an initial delay, and it cannot report a tap until that delay has run out — which
-puts the latency on the punch, where a looper can least afford it. So the left switch
-drives the record flip-flop directly, and playback moved to the middle switch.
+The left switch has no hold, so that it fires with no latency: it drives the record
+flip-flop directly. Playback moved to the middle switch.
 
 Granular freeze lost its footswitch in that move. It stays on the front page, and
 `Freeze state` sits on the `Controls` row with no gesture wired to it if you want it
