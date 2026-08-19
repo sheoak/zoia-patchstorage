@@ -89,34 +89,70 @@ off — with the loop going straight out, there is nothing to send.
 
 ## Home page layout (page 0)
 
-One effect per row: its mix first, then its knobs, then whatever it can do live, and
-its on/off in the last column.
+**One block per row, and every on/off in column 1.** The block's own controls follow
+its toggle across the row; the last column holds whatever that block can do live.
 
 | Row | Colour | Cells |
 | --- | --- | --- |
-| Looper | aqua | `L.Level`, `L.Start`, `L.Length`, `L.Clock` — `L.RevL`, `L.RevR`, `L.FX` |
-| Granular | peach | `G.Mix`, `G.Pos`, `G.Length`, `G.Pitch`, `G.Density`, `G.Texture` — `G.Freeze`, `G.On` |
-| Delay | pink | `D.Mix`, `D.FB`, `D.Time`, `D.Depth`, `D.Rate` — `D.On` |
-| Reverb | purple | `R.Mix`, `R.Decay`, `R.Low`, `R.High` — `R.On` |
-| Sends | mango / aqua | `FXLive Send`, `FXLoop Send` — `FX On` |
+| Clock menu | magenta / surf | eight loop speeds, dark until the menu is opened |
+| Clock menu | green / white | `Clock Menu` launcher, `Clock: reset` |
+| Looper | aqua | `L.FX` — `L.Level`, `L.Start`, `L.Clock`, `L.Length` — `L.RevL`, `L.RevR`, `FXLoop Send` |
+| Granular | peach | `G.On` — `G.Mix`, `G.Pos`, `G.Pitch`, `G.Length`, `G.Texture`, `G.Density` — `G.Freeze` |
+| FX | pink / purple | `FX On` — `D.Mix`, `D.FB`, `D.Time`, `D.Depth`, `R.Mix`, `R.Decay` — `FXLive Send` |
 
-Every mix sits under the same finger, and every on/off down the right edge.
+The delay and the reverb share one row, one toggle and one send. That is what freed
+the row the clock menu now sits on.
 
 There is no output level on this page — `Out` runs with its gain control off, so the
 master level is whatever the mix adds up to. Trim at the amp or with `L.Level` and the
 `Mix` knobs.
 
-On/off indicators use one shared colour scheme (dim = off, bright = on). `FX On` is the
-master wet on/off; `Loop FX` flips the loop routing + record dry/wet behaviour described
-above.
+The three toggles in column 1 are orange, dim when the block is out and bright when it
+is in. `L.FX` is the exception: it sits one band up, on mango, so that recording can
+pull it down to orange. It is the record indicator as well as the loop-FX toggle.
 
-## Stompswitches (tap / hold)
+## The clock menu
+
+The ZOIA has no menu module, so page `Clock Menu` builds one out of seven. The
+launcher lights the top row; picking a speed sets it and shuts the menu.
+
+The eight speeds are just intervals on the looper's geometric `speed_pitch` range,
+written into the connection strengths rather than into a knob:
+
+| | ×1/4 | ×1/2 | ×2/3 | ×3/4 | ×1 | ×4/3 | ×3/2 | ×2 | ×3 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| interval | −2 oct | −1 oct | fifth ↓ | fourth ↓ | unity | fourth ↑ | fifth ↑ | +1 oct | +1 oct fifth |
+| strength | 29.992 | 39.994 | 44.157 | 45.867 | 50.003 | 54.138 | 55.847 | 59.979 | 65.842 |
+
+Travel on that range is `0.5 + log2(ratio) / 10`, so a tenth of the range is exactly
+one octave. All nine land within 2.5 cents, which is the limit of the integer strength
+grid.
+
+Unity is not in the menu row: it is the white cap beside the launcher, and it bypasses
+the menu so it works without opening anything.
+
+`L.Clock` writes the same looper parameter through a `Sample and Hold`, at 15.849%, so
+the knob spans exactly ×1/3 to ×3. Two triggers watch it — one direct, one through a
+`CV Invert` — so a move in either direction pulses a multiplier and pushes the knob's
+value into the hold. The menu and the knob therefore overwrite each other, and whichever
+moved last owns the speed.
+
+## Stompswitches
 
 | Switch | Tap | Hold |
 | --- | --- | --- |
-| **Left** (Rec/Dub) | Record / Overdub | Play / Stop |
-| **Mid** (Frz/Clr) | Granular Freeze | Clear / reset the loop |
+| **Left** (Rec/Dub) | Record → stop/play → overdub | — |
+| **Mid** (Play) | Playback on/off | Clear / reset the loop |
 | **Right** (Wet) | FX bus on/off | Loop FX on/off |
+
+The left switch has no hold. The tap-or-hold detector on the other two is an `ADSR`
+with an initial delay, and it cannot report a tap until that delay has run out — which
+puts the latency on the punch, where a looper can least afford it. So the left switch
+drives the record flip-flop directly, and playback moved to the middle switch.
+
+Granular freeze lost its footswitch in that move. It stays on the front page, and
+`Freeze state` sits on the `Controls` row with no gesture wired to it if you want it
+back under a foot.
 
 ## Looper reverse (individual, stereo)
 
@@ -127,11 +163,12 @@ reverse.
 
 ## Notes
 
-- **CPU:** this patch runs *close to the ZOIA's limit*. The granular, the reverb and the
-  delay are the heavy modules. If you hit CPU errors, lower the granular's grain count,
-  or swap the Hall reverb for a lighter one. Adding modules on top may push it over —
-  trim elsewhere first.
-- **MIDI:** most parameters are mapped to MIDI CC (channel 12) for external control.
+- **CPU:** this patch runs *close to the ZOIA's limit*. The reverb is a `Reverb Lite`
+  and the granular runs three grains for that reason. What costs at runtime is not the
+  module count but the parameter values: a looper off unity resamples, and overdubbing
+  while it runs fast costs more again. Grain density is the next most expensive thing
+  here. Adding modules on top may push it over — trim elsewhere first.
+- **MIDI:** none. The CC block was removed; nothing in the patch listens.
 - **Stereo:** everything is stereo, and a single cable in works — the ZOIA copies the
   left input to the right, so both sides are fed. Plug in stereo and the two sides stay
   independent, which is what the split reverse and the two loopers are for.
