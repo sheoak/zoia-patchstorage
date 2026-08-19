@@ -147,9 +147,9 @@ moved last owns the speed.
 
 | Switch | Tap | Hold |
 | --- | --- | --- |
-| **Left** (Rec/Dub) | Record → stop/play → overdub | — |
-| **Mid** (Play) | Playback on/off | Clear / reset the loop |
-| **Right** (Wet) | FX bus on/off | Loop FX on/off |
+| **Left** — Record | Record → stop/play → overdub | — |
+| **Mid** — Playback/Clear | Playback on/off | Clear / reset the loop |
+| **Right** — FX/Loop FX | FX bus on/off | Loop FX on/off |
 
 The left switch has no hold, so that it fires with no latency: it drives the record
 flip-flop directly. Playback moved to the middle switch.
@@ -172,7 +172,9 @@ reverse.
   module count but the parameter values: a looper off unity resamples, and overdubbing
   while it runs fast costs more again. Grain density is the next most expensive thing
   here. Adding modules on top may push it over — trim elsewhere first.
-- **MIDI:** none. The CC block was removed; nothing in the patch listens.
+- **MIDI:** 25 CCs, assigned straight onto the parameters rather than through a MIDI
+  module. Every knob on the front page, plus the four toggles, the freeze, the two
+  reverses and playback. Nothing switches over MIDI that a footswitch cannot do.
 - **Stereo:** everything is stereo, and a single cable in works — the ZOIA copies the
   left input to the right, so both sides are fed. Plug in stereo and the two sides stay
   independent, which is what the split reverse and the two loopers are for.
