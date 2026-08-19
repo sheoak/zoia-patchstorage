@@ -170,8 +170,9 @@ reverse.
 - **CPU:** this patch runs *close to the ZOIA's limit*. The reverb is a `Reverb Lite`
   and the granular runs three grains for that reason. What costs at runtime is not the
   module count: **overdub** is the expensive one, and overdubbing while the clock runs
-  fast costs more again. Grain density is next. Moving the clock on its own is free.
-  Adding modules on top may push it over — trim elsewhere first.
+  fast costs more again. Moving the clock on its own is free, and so is a long grain —
+  `max_grain_size` reserves memory, it does not compute. Adding modules on top may push
+  it over — trim elsewhere first.
 - **MIDI:** 25 CCs, assigned straight onto the parameters rather than through a MIDI
   module. Every knob on the front page, plus the four toggles, the freeze, the two
   reverses and playback. Nothing switches over MIDI that a footswitch cannot do.
