@@ -94,7 +94,7 @@ its toggle across the row; the last column holds whatever that block can do live
 
 | Row | Colour | Cells |
 | --- | --- | --- |
-| Clock menu | sky / surf | eight loop speeds, dark until the menu is opened |
+| Clock menu | lime / yellow | eight loop speeds, dark until the menu is opened |
 | Clock menu | mango / white | `Clock Menu` launcher, `Clock: reset` |
 | Looper | aqua | `L.FX` — `L.Level`, `L.Start`, `L.Clock`, `L.Length` — `L.RevL`, `L.RevR`, `FXLoop Send` |
 | Granular | blue | `G.On` — `G.Mix`, `G.Pos`, `G.Pitch`, `G.Length`, `G.Texture`, `G.Density` — `G.Freeze` |
