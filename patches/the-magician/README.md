@@ -107,9 +107,10 @@ There is no output level on this page — `Out` runs with its gain control off, 
 master level is whatever the mix adds up to. Trim at the amp or with `L.Level` and the
 `Mix` knobs.
 
-The three toggles in column 1 are orange, dim when the block is out and bright when it
-is in. `L.FX` is the exception: it sits one band up, on mango, so that recording can
-pull it down to orange. It is the record indicator as well as the loop-FX toggle.
+The three toggles in column 1 are all orange, dim when the block is out and bright when
+it is in. `L.FX` carries a second job: a `CV Invert` on the record state subtracts 5%
+from its colour while the looper is running, which drops it one band into red. It is the
+record indicator as well as the loop-FX toggle.
 
 ## The clock menu
 
