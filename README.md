@@ -26,6 +26,7 @@ way to end up wondering where a patch went.
 | [The Lovers](patches/the-lovers) | Chorus and vibrato |
 | [The World](patches/the-world) | Five effects and two meters |
 | [Float Menu](patches/float-menu) | A tutorial patch: building a hidden menu |
+| [Temperance](patches/temperance) | The poor man's graphic EQ: five bands of seven steps, four presets, a compressor |
 
 `main` carries the patches that are played. One still being built lives on its own
 branch until it is — the open draft pull requests are what is in progress.
