@@ -25,6 +25,7 @@ way to end up wondering where a patch went.
 | [The Hierophant MKII](patches/the-hierophant-mk2) | Stereo |
 | [The Lovers](patches/the-lovers) | Chorus and vibrato |
 | [The World](patches/the-world) | Five effects and two meters |
+| [Float Menu](patches/float-menu) | A tutorial patch: building a hidden menu |
 
 `main` carries the patches that are played. One still being built lives on its own
 branch until it is — the open draft pull requests are what is in progress.
