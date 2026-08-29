@@ -1,7 +1,7 @@
 # The Magician
 
-A fine-tuned micro-looper. Loop anything and it comes back changed — barely, or beyond
-recognition — while you keep playing over the top.
+A fine-tuned micro-looper with a granular engine, a delay, a reverb. Loop anything and it
+comes back changed — barely, or beyond recognition — while you keep playing over the top.
 
 Part of a Tarot-arcana series — the Magician *captures and transmutes*. Inspired by the
 Chase Bliss Mood MKII.
