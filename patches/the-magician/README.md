@@ -2,12 +2,10 @@
 
 A micro-looper with a granular engine behind it, sharing one delay and one reverb.
 
-The granular reads the loop rather than replacing it, so a single knob covers the whole
-distance between a light grain over the phrase and a texture with nothing recognisable
-left in it.
+What you loop can come back barely touched or unrecognisable.
 
-Underneath, the looping is the part that took the work: the record switch fires without
-latency, and one lamp says whether you are recording, playing or overdubbing.
+The looping underneath is the part that took the work: no latency on the record switch,
+and it always tells you whether it is recording, playing or overdubbing.
 
 Guitar, synth or voice. Part of a Tarot-arcana series — the Magician *captures and
 transmutes*. Inspired by the Chase Bliss Mood MKII.
