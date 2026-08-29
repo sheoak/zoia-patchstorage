@@ -1,9 +1,7 @@
 # The Magician
 
-A micro-looper. Loop anything and it comes back changed — barely, or beyond recognition
-— while you keep playing over the top.
-
-No lag when you hit record, and you can always see what it is doing.
+A fine-tuned micro-looper. Loop anything and it comes back changed — barely, or beyond
+recognition — while you keep playing over the top.
 
 Part of a Tarot-arcana series — the Magician *captures and transmutes*. Inspired by the
 Chase Bliss Mood MKII.
