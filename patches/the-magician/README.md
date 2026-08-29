@@ -3,7 +3,7 @@
 A micro-looper. Loop anything and it comes back changed — barely, or beyond recognition
 — while you keep playing over the top.
 
-It never fights you and never leaves you guessing what state it is in.
+No lag when you hit record, and you can always see what it is doing.
 
 Guitar, synth or voice. Part of a Tarot-arcana series — the Magician *captures and
 transmutes*. Inspired by the Chase Bliss Mood MKII.
