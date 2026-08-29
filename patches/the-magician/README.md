@@ -4,7 +4,7 @@ A fine-tuned micro-looper with a granular engine, a delay, a reverb. Loop anythi
 comes back changed — barely, or beyond recognition — while you keep playing over the top.
 
 Part of a Tarot-arcana series — the Magician *captures and transmutes*. Inspired by the
-Chase Bliss Mood MKII.
+Chase Bliss Mood MKII, and a long way from it now.
 
 > See [SCHEMA.md](SCHEMA.md) for the signal-path diagrams.
 
