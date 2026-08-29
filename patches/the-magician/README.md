@@ -1,11 +1,9 @@
 # The Magician
 
-A micro-looper with a granular engine behind it, sharing one delay and one reverb.
+A micro-looper. Loop anything and it comes back changed — barely, or beyond recognition
+— while you keep playing over the top.
 
-What you loop can come back barely touched or unrecognisable.
-
-The looping underneath is the part that took the work: no latency on the record switch,
-and it always tells you whether it is recording, playing or overdubbing.
+It never fights you and never leaves you guessing what state it is in.
 
 Guitar, synth or voice. Part of a Tarot-arcana series — the Magician *captures and
 transmutes*. Inspired by the Chase Bliss Mood MKII.
