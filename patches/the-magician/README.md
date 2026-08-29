@@ -1,18 +1,13 @@
 # The Magician
 
-**A looper you play, not a looper you manage.**
+A very flexible patch. It works with voice as well as any instrument, and goes from a
+subtle grain on a loop to a complete transformation into a deep texture.
 
-Catch a phrase under your left foot. It comes straight back and keeps coming. From there
-it stops being a recording and becomes material: play it slower or faster, an octave down
-or a fifth up, run it backwards, or grind it into a cloud with no notes left in it. Delay
-and reverb sit behind the loop and behind what you are playing now, so the two share one
-room.
-
-You keep playing over it the whole time, clean and in stereo. The loop never touches your
-live sound.
+A lot of care has gone into a quality looping experience: no latency on the record
+switch, and proper status indicators. It packs three effects and a lot of options.
 
 Part of a Tarot-arcana series. The Magician *captures and transmutes*. Inspired by the
-Chase Bliss Mood, then taken somewhere else.
+Chase Bliss Mood MKII.
 
 > See [SCHEMA.md](SCHEMA.md) for the signal-path diagrams.
 
@@ -79,6 +74,26 @@ loop, live). It is *not* part of the Delay/Reverb bus and it does *not* touch th
 signal. So the granular reshapes the loop, and the FX bus adds space/echo to live +
 loop.
 
+### The low cut is on what the granular is fed
+
+`Loop HPF` sits between the looper and the granular — it filters the granular's **input**,
+not the grains it produces, and not the loop. The leg that carries the loop straight to
+the output takes the looper unfiltered, so the phrase keeps its bottom while the granular
+voice above it can be thinned.
+
+Grains cannot hold bass anyway: a 50 Hz cycle is 20 ms, longer than a short grain, so low
+content comes back as thumps rather than pitch. Cutting it before the grains are taken
+also keeps it out of the shared reverb.
+
+One consequence worth knowing: because only the granular leg is filtered, `Grain Blend`
+moves the bass as well as the texture. That is the point rather than a defect here — the
+live path is a separate full-range leg, so the mix never loses its bottom, and one knob
+takes the loop from a full-range foundation to a thinner texture.
+
+The knob spans **27.5 Hz to 880 Hz**: `Loop HPF` drives the filter's frequency at 50%, so
+the bottom of its travel is genuinely off. It defaults to 0. Resonance sits at the
+module's minimum, Q = 1.
+
 ### Stereo where it counts
 
 **The live path is stereo end to end.** What you play reaches the output on its own
@@ -136,17 +151,20 @@ its toggle across the row; the last column holds whatever that block can do live
 | Row | Colour | Cells |
 | --- | --- | --- |
 | Clock menu | lime / white / yellow | eight loop speeds, dark until the menu is opened |
-| Clock menu | mango | `Clock Menu` launcher, and the record lamp beside it |
-| Looper | aqua | `L.Loop FX` — `L.Level`, `L.Start`, `L.Clock`, `L.Length` — `Loop Send FX` — `L.Reverse` |
-| Granular | blue | `G.On` — `G.Mix`, `G.Pos`, `G.Pitch`, `G.Length`, `G.Texture`, `G.Density` — `G.Freeze` |
-| FX | magenta / purple | `FX On` — `D.Mix`, `D.FB`, `D.Time`, `R.Mix`, `R.Decay` — `Live Send FX` |
+| Clock menu | mango / yellow | `Clock Menu` launcher, and the loop-state lamp beside it |
+| Looper | aqua | `Loop FX` — `Loop Level`, `Loop Start`, `Loop Clock`, `Loop Length`, `Loop HPF` — `Loop Send FX` — `Loop Reverse` |
+| Granular | blue | `Grain On` — `Grain Blend`, `Grain Pos`, `Grain Pitch`, `Grain Length`, `Grain Texture`, `Grain Density` — `Grain Freeze` |
+| FX | magenta / purple | `FX On` — `Dly Mix`, `Dly FB`, `Dly Time`, `Rvb Mix`, `Rvb Decay` — `Live Send FX` |
+
+Cell names spell out the block they belong to, so a cell says what it is without the
+legend: `Dly`, `Rvb`, `Grain`, `Loop`.
 
 The delay and the reverb share one row, one toggle and one send. That is what freed
-the row the clock menu now sits on. The two knobs that did not fit, `D.Depth` and
-`D.Rate`, sit on page `Settings` together.
+the row the clock menu now sits on. The two knobs that did not fit, `Dly Depth` and
+`Dly Rate`, sit on page `Settings` together.
 
 There is no output level on this page — `Out` runs with its gain control off, so the
-master level is whatever the mix adds up to. Trim at the amp or with `L.Level` and the
+master level is whatever the mix adds up to. Trim at the amp or with `Loop Level` and the
 `Mix` knobs.
 
 The three toggles in column 1 are all orange, dim when the block is out and bright when
@@ -155,8 +173,8 @@ above, so a toggle only ever means on or off.
 
 The knobs run **aqua → blue → magenta/purple** down the page, in the order the signal
 meets them. The delay and the reverb are one band apart on purpose: one row, one bus,
-one toggle, one send. Around them, green is anything held or struck — `L.Reverse` and
-`G.Freeze`, each at the end of its own row — and peach is a level going to the shared
+one toggle, one send. Around them, green is anything held or struck — `Loop Reverse` and
+`Grain Freeze`, each at the end of its own row — and peach is a level going to the shared
 bus.
 
 ## The clock menu
@@ -181,7 +199,7 @@ unity are lime, the three above are yellow. Unity is the white cap in the middle
 writes the speed straight to the hold as well as through the menu, so it is the one
 choice that cannot be knocked off by a rounding error.
 
-`L.Clock` writes the same looper parameter through a `Sample and Hold`, at 15.849%, so
+`Loop Clock` writes the same looper parameter through a `Sample and Hold`, at 15.849%, so
 the knob spans exactly ×1/3 to ×3. Two triggers watch it — one direct, one through a
 `CV Invert` — so a move in either direction pulses a multiplier and pushes the knob's
 value into the hold. The menu and the knob therefore overwrite each other, and whichever
@@ -234,7 +252,7 @@ the middle switch cannot fight the left one.
 
 ## Notes
 
-- **MIDI:** 27 CCs, assigned straight onto the parameters rather than through a MIDI
+- **MIDI:** 28 CCs, assigned straight onto the parameters rather than through a MIDI
   module. Every knob on the front page, plus the toggles, the freeze, the reverse, the
   playback, and record and clear. Nothing switches over MIDI that a footswitch cannot do.
 - **Stereo:** a single cable in works — the ZOIA copies the left input to the right.
