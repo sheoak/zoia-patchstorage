@@ -10,44 +10,51 @@ signal. How much dry survives is what turns a chorus into a vibrato.
 ```mermaid
 flowchart LR
     IN(["In L / R"])
-    HP_L["Cut L<br/>highpass"]
-    HP_R["Cut R"]
     DL_L["Delay L"]
     DL_R["Delay R"]
-    LP_L["Band L<br/>lowpass"]
-    LP_R["Band R"]
+    DRY["Delay dry<br/>interpolation off"]
+    TONE_M["Tone<br/>Tone Control, stereo"]
     DCV{{"D-C-V<br/>Audio Balance mono"}}
     RVB["Hall"]
     OUT(["Out L / R"])
 
-    CUT["Cut"]
-    TONE["Tone"]
+    LOW["Low"]
+    HIGH["High"]
     BLEND["Blend"]
+    TIME["Time<br/>base delay"]
 
-    IN --> HP_L --> DL_L --> LP_L
-    IN --> HP_R --> DL_R --> LP_R
-    IN -->|"input 1 : dry"| DCV
-    LP_L -->|"input 2 : wet"| DCV
+    IN --> DL_L --> TONE_M
+    IN --> DL_R --> TONE_M
+    IN --> DRY
+    DRY -->|"input 1 : dry"| DCV
+    TONE_M -->|"input 2 : wet L"| DCV
     DCV --> RVB
-    LP_R -->|"the wet, alone"| RVB
+    TONE_M -->|"the wet R, alone"| RVB
     RVB --> OUT
-    CUT -->|"frequency"| HP_L & HP_R
-    TONE -->|"frequency"| LP_L & LP_R
+    LOW --> TONE_M
+    HIGH --> TONE_M
     BLEND -->|"mix"| DCV
+    TIME --> DL_L & DL_R & DRY
 
     style DCV fill:#22543d,color:#fff
     style DL_L fill:#2c5282,color:#fff
     style DL_R fill:#2c5282,color:#fff
+    style DRY fill:#2c5282,color:#fff
 ```
 
 The left output carries the `D-C-V` mix, the right output carries the wet alone. Both
 sides modulate in phase. Downstream of the split both channels pass through one stereo
 `Hall Reverb`, so the split is exact only with `R.Mix` at zero.
 
-`Cut` is a highpass in front of each delay — detuned bass is what makes a chorus flabby,
-and the dry path leaves the input *before* it, so the low end stays whole. `Band` is the
-lowpass after. Each pair is driven from a single knob, so left and right cannot drift
-apart; the filters' own `frequency` sits at zero and the knob carries the range.
+**The dry has a delay of its own.** `Delay dry` takes the same `Time` as the wet pair, so
+the two arrive together and every knob at zero is a real bypass. Its `interpolation` is
+**off**: the dry must not pitch when the time moves, and it never needs to — only the wet
+is modulated. The base delay is kept rather than zeroed, because a chorus with no base
+delay is a flanger.
+
+`Low` and `High` are the two ends of one stereo `Tone Control` after the delays, flat at
+the centre. One module for both channels, so left and right cannot drift apart, and the
+dry never passes through it.
 
 ## Control
 
@@ -184,19 +191,19 @@ returns to the default.
 
 | Page | Contents |
 | --- | --- |
-| 0 `The Lovers` | Every knob, the two menus, the envelope LED |
+| 0 `The Lovers` | Every knob, the two menus, the lamps |
 | 2 `Switches` | The three footswitches and their tap/hold split |
-| 3 `Audio` | Input, filters, delays, `D-C-V`, output |
-| 4 `Rate` | Knob vs tap arbitration, the ramp to `Rate 2` |
+| 3 `Audio` | Input, the three delays, `Tone`, `D-C-V`, `Hall`, output |
+| 4 `Rate` | Knob vs tap arbitration, the ramp to `Rate 2`, the rate lamps |
 | 5 `Clock` | MIDI clock in, tap to CV, division, sync selection |
 | 6 `Shape` | The LFOs and the switch that picks one |
 | 7 `Time` | `Drift` and the two delay-time mixers |
-| 8 `Reverb` | `Hall Reverb` |
-| 9 `Menus` | Show/hide logic for the two menus |
-| 10 `Params` | Envelope follower, threshold gate, rectifier |
+| 8 `Menus` | Show/hide logic for the two menus |
+| 9 `Params` | Envelope follower, threshold gate, rectifier |
+| 10 `Colors` | The colour constants the lamps and menus share |
 
 ## What has to be set by ear
 
-`Cut` and `Tone`, the slew rate of the ramp to `Rate 2`, the `Dyn` amount, and the
+`Low` and `High`, the slew rate of the ramp to `Rate 2`, the `Dyn` amount, and the
 envelope's rise and fall. None of them can be derived — they depend on the guitar and the
 amp in front of them.

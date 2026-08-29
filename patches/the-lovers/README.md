@@ -21,8 +21,11 @@ The first page is all knobs. Three of them get you a sound:
 | `Rate` | How fast the effect moves |
 | `Depth` | How much it moves |
 
-The green LED lights up as `Dyn` responds to your playing. It stays dark when `Dyn` is at
-zero.
+The lamps in the middle two columns light up as `Dyn` responds to your playing. They stay
+dark when `Dyn` is at zero.
+
+With every knob at zero the patch is a bypass: the dry runs through a delay of its own, so
+it stays in step with the wet and nothing thins out.
 
 The three footswitches each do two things:
 
@@ -39,28 +42,52 @@ cancels the tapped tempo and hands control back to the knob.
 
 ```mermaid
 flowchart LR
-    IN([In]) --> HP[Highpass<br/>Cut]
-    HP --> DLY[Delay]
-    DLY --> LP[Lowpass<br/>Tone]
-    LP --> BLEND{Blend}
-    IN --> BLEND
+    IN([In]) --> DLY[Delay]
+    DLY --> TONE[Tone<br/>Low · High]
+    TONE --> BLEND{Blend}
+    IN --> DRYDLY[Dry delay<br/>same time, no interpolation]
+    DRYDLY --> BLEND
     BLEND --> REV[Reverb]
     REV --> OUT([Out])
     LFO(LFO<br/>Rate · Depth) -. moves the delay time .-> DLY
 ```
 
+**The dry is delayed too.** It runs through its own delay line, set to the same base time
+as the wet, with interpolation off so it never pitches. That is what makes every knob at
+zero a true bypass: dry and wet stay in step, so nothing hollows out and nothing flanges.
+The base delay is kept rather than zeroed — zeroing it is what turns a chorus into a
+flanger.
+
 ## Front page
 
 | Row | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **1** | | | Rate | Depth | Reverb decay | Dyn | | |
-| **2** | 1/4 | | Rate 2 | Lag | Reverb tone | Fall | | Sine |
-| **3** | 1/4 triplet | | Drift | Blend | Reverb mix | Threshold | | Triangle |
-| **4** | 1/8 | | LED | Cutoff | Tone | | | Random |
-| **5** | Clock | | | | LED | | | LFO |
+| **1** | | | `Low` | | | `High` | | |
+| **2** | 1/4 | `R.Decay` | `R.Mix` | Env led | Env led | `Env. Fall` | `Env. Dyn` | Sine |
+| **3** | 1/4 triplet | `R.Tone` | Rate led | `Rate` | `Rate 2` | Rate led | `Env Thresh` | Triangle |
+| **4** | 1/8 | | `Drift` | Verb led | Verb led | `Lag` | | Random |
+| **5** | Clock | | | `Depth` | `Blend DCV` | | | LFO |
 
 Columns 1 and 8 are the two menus, closed until you press their launcher on row 5. The
-rest are knobs, grouped by colour.
+lamps sit in the middle two columns, the knobs either side of them, grouped by colour.
+
+### The lamps
+
+| Lamp | Where | What it says |
+| --- | --- | --- |
+| Env led | row 2, middle | the envelope, as `Dyn` responds to your playing |
+| Rate led | row 3, either side of `Rate` | which source owns the rate, pulsing with the LFO |
+| Verb led | row 4, middle | the reverb is on |
+
+The two **Rate leds** flank `Rate` and `Rate 2`, and they pulse in time with the
+modulation, so you can see the shape and the speed before you hear them. Their colour is
+the useful part:
+
+| Colour | The rate comes from |
+| --- | --- |
+| Peach | the `Rate` knob |
+| Aqua | tap tempo — the left switch |
+| Magenta | MIDI clock |
 
 ### Aqua — the effect
 
@@ -93,10 +120,13 @@ A green LED beside them lights as the envelope opens.
 
 ### Peach — tone
 
+One tone control on the modulated voice, two ends, flat at the centre. It sits after the
+delay, so it shapes how the wet sits against the dry and leaves the dry alone.
+
 | Knob | What it does |
 | --- | --- |
-| `Cut` | Highpass before the delay. Keeps bass out of the modulated voice |
-| `Tone` | Lowpass on the modulated voice. How dark it sits against the dry |
+| `Low` | Bass in the modulated voice. Down keeps the low end out of the chorus |
+| `High` | Treble in the modulated voice. Down sits it darker behind the dry |
 
 ### Menus
 
@@ -130,8 +160,8 @@ across each knob's travel.
 
 | Orange — dynamics | | Peach — tone | |
 | --- | --- | --- | --- |
-| 40 | `Env. Dyn` | 50 | `Cut` |
-| 41 | `Env. Fall` | 51 | `Tone` |
+| 40 | `Env. Dyn` | 50 | `Low` |
+| 41 | `Env. Fall` | 51 | `High` |
 | 42 | `Env Thresh` | | |
 
 MIDI clock drives the LFO when sync is on — long press the middle switch.
