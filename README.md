@@ -20,7 +20,8 @@ way to end up wondering where a patch went.
 
 | Patch | Builds |
 | --- | --- |
-| [The Magician](patches/the-magician) | Micro-looper, granular and a shared FX bus |
+| [The Magician](patches/the-magician) | Loop a phrase, then take it apart |
+| [The Magician Above](patches/the-magician-above) | The same, without overdub |
 | [The Hierophant](patches/the-hierophant) | Mono |
 | [The Hierophant MKII](patches/the-hierophant-mk2) | Stereo |
 | [The Lovers](patches/the-lovers) | Chorus and vibrato |
