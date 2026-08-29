@@ -73,21 +73,17 @@ lamps sit in the middle two columns, the knobs either side of them, grouped by c
 
 ### The lamps
 
-| Lamp | Where | What it says |
-| --- | --- | --- |
-| Env led | row 2, middle | the envelope, as `Dyn` responds to your playing |
-| Rate led | row 3, either side of `Rate` | which source owns the rate, pulsing with the LFO |
-| Verb led | row 4, middle | the reverb is on |
+Three pairs, down the middle two columns.
 
-The two **Rate leds** flank `Rate` and `Rate 2`, and they pulse in time with the
-modulation, so you can see the shape and the speed before you hear them. Their colour is
-the useful part:
+- Row 2 is the envelope. It brightens as `Dyn` responds to your playing, and stays dark
+  with `Dyn` at zero.
 
-| Colour | The rate comes from |
-| --- | --- |
-| Peach | the `Rate` knob |
-| Aqua | tap tempo — the left switch |
-| Magenta | MIDI clock |
+- Row 3 is the rate, one lamp either side of `Rate` and `Rate 2`. The brightness pulses in
+  time with the modulation, so you see the shape and the speed before you hear them. The
+  colour says where the rate comes from: the `Rate` knob (peach), tap tempo (aqua) or an
+  incoming MIDI clock (magenta).
+
+- Row 4 is the reverb. Lit means it is on.
 
 ### Aqua — the effect
 
