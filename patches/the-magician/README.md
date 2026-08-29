@@ -1,13 +1,16 @@
 # The Magician
 
-A very flexible patch. It works with voice as well as any instrument, and goes from a
-subtle grain on a loop to a complete transformation into a deep texture.
+A micro-looper with a granular engine behind it, sharing one delay and one reverb.
 
-A lot of care has gone into a quality looping experience: no latency on the record
-switch, and proper status indicators. It packs three effects and a lot of options.
+The granular reads the loop rather than replacing it, so a single knob covers the whole
+distance between a light grain over the phrase and a texture with nothing recognisable
+left in it.
 
-Part of a Tarot-arcana series. The Magician *captures and transmutes*. Inspired by the
-Chase Bliss Mood MKII.
+Underneath, the looping is the part that took the work: the record switch fires without
+latency, and one lamp says whether you are recording, playing or overdubbing.
+
+Guitar, synth or voice. Part of a Tarot-arcana series — the Magician *captures and
+transmutes*. Inspired by the Chase Bliss Mood MKII.
 
 > See [SCHEMA.md](SCHEMA.md) for the signal-path diagrams.
 
