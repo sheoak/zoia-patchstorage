@@ -5,8 +5,8 @@ A micro-looper. Loop anything and it comes back changed — barely, or beyond re
 
 No lag when you hit record, and you can always see what it is doing.
 
-Guitar, synth or voice. Part of a Tarot-arcana series — the Magician *captures and
-transmutes*. Inspired by the Chase Bliss Mood MKII.
+Part of a Tarot-arcana series — the Magician *captures and transmutes*. Inspired by the
+Chase Bliss Mood MKII.
 
 > See [SCHEMA.md](SCHEMA.md) for the signal-path diagrams.
 
