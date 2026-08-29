@@ -72,13 +72,23 @@ recording, because nothing set the play state; now it is at 98 %.
 
 `Play AND` moved ahead of the Trigger, so while recording no pulse leaves at all.
 
-## Left to set on the pedal
+**At power-on the state is *playing*.** `Play state SH` boots at 1, the way
+Below's `Playback FF` boots set, so the lamp is lit and the first press of the
+middle switch stops the loop. Booting at 0 left the lamp dark while the Looper
+was in fact in play, and the first press then lit the lamp and stopped the loop
+at the same time.
 
-The options are still the Magician's. To finish the variant:
+## The two cards agree
+
+Every knob on page 0 carries Below's value — the same delay, reverb, granular
+and loop settings on both cards. What Above does differently is in the options,
+and it is all in the file:
 
 - `Looper` — `overdub: no`, on both `LoopL` and `LoopR`
-- `Granular` — `num_grains: 4`
-- `Delay w/Mod` — `type: old_tape`
-- `G.Density` → `Granular.density` — back to 100 %, currently capped at 79.983 %
+- `Granular` — 5 grains, where Below has 3: the headroom overdub gave back
+- `Delay w/Mod` — `type: tape`
 
-106 modules, 184 connections, cpu 50.15.
+Still to do: `G.Density` → `Granular.density` back to 100 %, currently capped
+at 79.983 %.
+
+107 modules, 188 connections, cpu 50.3.
