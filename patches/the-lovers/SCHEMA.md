@@ -183,9 +183,12 @@ and a step in `delay_time` is a click.
 
 Both menus work the same way. A `CV Flip Flop` holds open/closed and the launcher toggles
 it. The options only respond while it is open: a `Multiplier` gates the picks, a
-`Sample and Hold` stores the choice, an `In Switch` applies it. Pressing the launcher
-while the menu is already open clears the hold instead, which is why a double press
-returns to the default.
+`Sample and Hold` stores the choice, an `In Switch` applies it.
+
+The pick is what writes the hold — `pick MUL` feeds both its value and its trigger — so
+the launcher only ever opens and shuts. It used to clear the hold as well, through
+`clear AND` = AND(open, launcher tap), which made a second press revert to the default.
+That connection is gone; `Shape clear AND` and `Clock clear AND` are left unwired.
 
 ## Pages
 

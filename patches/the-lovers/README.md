@@ -130,7 +130,7 @@ Two buttons on the bottom row open menus. `Clock` in yellow, bottom left, sets w
 is worth. `LFO` in aqua, bottom right, picks the modulation shape. Press one, its options
 appear beside it, pick one and they hide again.
 
-Double-press a launcher to go back to its default.
+Pressing the launcher again just shuts the menu. The choice stays as it was.
 
 Both menus use the same three colours, in the same order:
 
