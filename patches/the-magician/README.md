@@ -142,8 +142,8 @@ off — with the loop going straight out, there is nothing to send.
 
 ## Home page layout (page 0)
 
-**One block per row, and every on/off in column 1.** The block's own controls follow
-its toggle across the row; the last column holds whatever that block can do live.
+**One section per row, and every on/off in column 1.** A section's controls follow its
+toggle across the row; the last column holds whatever it can do live.
 
 | Row | Colour | Cells |
 | --- | --- | --- |
