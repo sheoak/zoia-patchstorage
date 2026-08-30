@@ -1,9 +1,9 @@
 # The Magician — signal path
 
-Both diagrams show the same patch. What changes between them is `L.FX`, which
+Both diagrams show the same patch. What changes between them is `L.Loop FX`, which
 picks the loop's routing *and* what the looper records.
 
-## L.FX OFF — the loop plays dry, and records the mix
+## Loop FX OFF — the loop plays dry, and records the mix
 
 ```mermaid
 flowchart LR
@@ -12,7 +12,7 @@ flowchart LR
     FX["Delay → Reverb"]
     WET["Wet out"]
     RECMIX{{"Rec Mix"}}
-    LOOP["Looper L/R"]
+    LOOP["Looper"]
     GRAIN["Granular"]
     OUT(["Out"])
 
@@ -24,11 +24,11 @@ flowchart LR
 ```
 
 The looper takes what reaches the output: the live dry and the wet, already
-balanced by `FXLive Send`. The loop is not re-sent to the effects on playback, so
+balanced by `Live Send FX`. The loop is not re-sent to the effects on playback, so
 the effect you performed is frozen into the recording — and the granular then
 works on that.
 
-## L.FX ON — the loop is sent to the effects, and records dry
+## Loop FX ON — the loop is sent to the effects, and records dry
 
 ```mermaid
 flowchart LR
@@ -37,7 +37,7 @@ flowchart LR
     FX["Delay → Reverb"]
     WET["Wet out"]
     RECMIX{{"Rec Mix"}}
-    LOOP["Looper L/R"]
+    LOOP["Looper"]
     GRAIN["Granular"]
     OUT(["Out"])
 
@@ -55,12 +55,12 @@ granular sits before the effects rather than after them.
 
 ## Rec Mix
 
-One `Audio Balance`, with `L.FX` driving its `mix` directly — no level to
+One `Audio Balance`, with `L.Loop FX` driving its `mix` directly — no level to
 compute:
 
 ```
-L.FX = 0  ->  input 1 : live dry + wet, the output mix
-L.FX = 1  ->  input 2 : the raw input, at full
+L.Loop FX = 0  ->  input 1 : live dry + wet, the output mix
+L.Loop FX = 1  ->  input 2 : the raw input, at full
 ```
 
 Because a flip-flop drives it, the crossfader never sits between the two
@@ -76,6 +76,6 @@ live :  Live dry = In × (1 − live send)      Dry send  = In × live send
 loop :  Loop dry = Loop × (1 − loop send)    Loop send = Loop × loop send
 ```
 
-The loop's pair is gated by `L.FX` too: with it off the loop goes out dry and
-sends nothing, so `FXLoop Send` only bites once the loop is routed to the
+The loop's pair is gated by `L.Loop FX` too: with it off the loop goes out dry and
+sends nothing, so `Loop Send FX` only bites once the loop is routed to the
 effects.
