@@ -142,16 +142,16 @@ off — with the loop going straight out, there is nothing to send.
 
 ## Home page layout (page 0)
 
-**One section per row, and every on/off in column 1.** A section's controls follow its
-toggle across the row; the last column holds whatever it can do live.
+**One section per row. The on/off in column 1, whatever the section can do live in
+column 2.** The knobs follow across the row, and the send is the last cell.
 
 | Row | Colour | Cells |
 | --- | --- | --- |
 | Clock menu | lime / white / yellow | eight loop speeds, dark until the menu is opened |
 | Clock menu | mango / yellow | `Clock Menu` launcher, and the loop-state lamp beside it |
-| Looper | aqua | `Loop FX` — `Loop Level`, `Loop Start`, `Loop Clock`, `Loop Length`, `Loop HPF` — `Loop Send FX` — `Loop Reverse` |
-| Granular | blue | `Grain On` — `Grain Blend`, `Grain Pos`, `Grain Pitch`, `Grain Length`, `Grain Texture`, `Grain Density` — `Grain Freeze` |
-| FX | magenta / purple | `FX On` — `Dly Mix`, `Dly FB`, `Dly Time`, `Rvb Mix`, `Rvb Decay` — `Live Send FX` |
+| Looper | aqua | `Loop FX` — `Loop Reverse` — `Loop Level`, `Loop Start`, `Loop Clock`, `Loop Length`, `Loop HPF` — `Loop Send FX` |
+| Granular | blue | `Grain On` — `Grain Freeze` — `Grain Blend`, `Grain Pos`, `Grain Pitch`, `Grain Length`, `Grain Texture`, `Grain Density` |
+| FX | magenta / purple | `FX On` — column 2 dark — `Dly Mix`, `Dly FB`, `Dly Time`, `Rvb Mix`, `Rvb Decay` — `Live Send FX` |
 
 Cell names spell out the block they belong to, so a cell says what it is without the
 legend: `Dly`, `Rvb`, `Grain`, `Loop`.
@@ -171,8 +171,8 @@ above, so a toggle only ever means on or off.
 The knobs run **aqua → blue → magenta/purple** down the page, in the order the signal
 meets them. The delay and the reverb are one band apart on purpose: one row, one bus,
 one toggle, one send. Around them, green is anything held or struck — `Loop Reverse` and
-`Grain Freeze`, each at the end of its own row — and peach is a level going to the shared
-bus.
+`Grain Freeze`, each in column 2 beside its row's toggle — and peach is the last cell of
+a row, the send. `Loop HPF` is peach too, next to it.
 
 ## The clock menu
 
