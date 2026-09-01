@@ -26,7 +26,7 @@ way to end up wondering where a patch went.
 | [The Lovers](patches/the-lovers) | Chorus and vibrato |
 | [The World](patches/the-world) | Five effects and two meters |
 | [Float Menu](patches/float-menu) | A tutorial patch: building a hidden menu |
-| [Temperance](patches/temperance) | The poor man's graphic EQ: five bands of seven steps, four presets, a compressor |
+| [Temperance](patches/temperance) | The poor man's graphic EQ: five bands of seven steps, four presets |
 
 `main` carries the patches that are played. One still being built lives on its own
 branch until it is — the open draft pull requests are what is in progress.
@@ -40,11 +40,15 @@ notes that came with them.
 ```
 patches/<name>/
   <Patch>.bin        the patch, always 32768 bytes
-  README.md          what it is and how to play it, when one has been written
-  SCHEMA.md          how it is built, when one has been written
+  README.md          a quick tour, and a link to the documentation
+  VERSION            the build these files are
 ```
 
 A patch with several builds keeps them side by side in the same directory.
+
+The README is a tour, not a manual: what the patch is, what the feet do, and where the
+real documentation lives. Anything longer belongs on Zoiatheca, which draws the pedal
+itself — keeping a second copy here only means one of the two is out of date.
 
 ## Checks
 
