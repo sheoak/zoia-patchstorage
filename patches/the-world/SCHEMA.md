@@ -109,18 +109,28 @@ the top segments red.
 
 ## Home page layout
 
-Columns are effects, rows are parameters.
+Rows are effects, columns are themes.
+
+Transposed 2026-09-01: effects were columns, they are rows now, and the columns carry a
+theme so the same kind of knob lines up down the page.
 
 ```
-        phaser        flanger       chorus       delay       EQ
-row 0   Phsr Rate     Flngr Rate    Chr Rate     Dly Time    EQ Low
-row 1   Phsr Reso     Flngr Regen   Chr Width    Dly Fbk     EQ Mid
-row 2   Phsr Width    Flngr Width   Chr Tone     Dly Mod     EQ MidFrq
-row 3   —             Flngr Tone    Chr Mix      Dly Mix     EQ High
-row 4   Phsr On/Off   Flngr On/Off  Chr On/Off   Dly On/Off  EQ On/Off
+        on/off        mix        tone/time    rate        width/depth  intensity
+row 0   Phsr On/Off   —          —            Phsr Rate   Phsr Width   Phsr Reso
+row 1   Flngr On/Off  —          Flngr Tone   Flngr Rate  Flngr Width  Flngr Regen
+row 2   Chr On/Off    Chr Mix    Chr Tone     Chr Rate    Chr Width    —
+row 3   Dly On/Off    Dly Mix    Dly Time     Dly Rate    Dly Depth    Dly Fbk
+row 4   EQ On/Off     —          EQ Low       EQ Mid      EQ MidFrq    EQ High
 ```
 
-Columns 6 and 7 carry the two meters, `VU L1–L5` and `VU R1–R5`, bottom row loudest.
+The EQ row does not follow the themes — it has no modulation, so its four bands simply
+fill columns 3 to 6.
+
+Columns 7 and 8 carry the two meters, `VU L1–L5` and `VU R1–R5`. **`L5` is the top row and
+the loudest**: green at the bottom, then lima, mango, orange, red.
+
+`Dly Mod` became `Dly Depth` in the same pass, and `Dly Rate` was added beside it — the
+delay's `mod_rate`, which nothing had reached before.
 
 ## Conventions
 
