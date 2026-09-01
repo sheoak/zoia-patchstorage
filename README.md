@@ -41,14 +41,19 @@ notes that came with them.
 patches/<name>/
   <Patch>.bin        the patch, always 32768 bytes
   README.md          a quick tour, and a link to the documentation
+  SCHEMA.md          the developer guide: how it is wired, when one has been written
   VERSION            the build these files are
 ```
 
 A patch with several builds keeps them side by side in the same directory.
 
-The README is a tour, not a manual: what the patch is, what the feet do, and where the
-real documentation lives. Anything longer belongs on Zoiatheca, which draws the pedal
-itself — keeping a second copy here only means one of the two is out of date.
+**The README is a tour, not a manual** — what the patch is, what the feet do, and where the
+documentation lives. The player-facing writing belongs on Zoiatheca, which draws the pedal
+itself; a second copy here only means one of the two is out of date.
+
+**`SCHEMA.md` is for whoever opens the patch**, not for whoever plays it: the wiring, the
+raw values, and the reasons a thing is built the way it is. That has no home on Zoiatheca,
+so it stays here.
 
 ## Checks
 
