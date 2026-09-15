@@ -1,0 +1,88 @@
+# ZOIA patches
+
+Patches for the Empress ZOIA, one directory each.
+
+Every one is a `.bin` you drop on the SD card, alongside whatever has been written about
+it. Nothing here needs building or installing.
+
+## Installing one
+
+Copy the `.bin` into the `to_zoia` folder of your SD card, renamed with the slot you want:
+
+```
+000_zoia_The_World.bin
+```
+
+The pedal takes the number from the file name, so two files sharing one number is the usual
+way to end up wondering where a patch went.
+
+## What is here
+
+| Patch | Builds |
+| --- | --- |
+| [The Magician](patches/the-magician) | Loop a phrase, then take it apart |
+| [The Hierophant](patches/the-hierophant) | Mono |
+| [The Hierophant MKII](patches/the-hierophant-mk2) | Stereo |
+| [The Lovers](patches/the-lovers) | Chorus and vibrato |
+| [The World](patches/the-world) | Five effects and two meters |
+| [Float Menu](patches/float-menu) | A tutorial patch: building a hidden menu |
+| [Temperance](patches/temperance) | The poor man's graphic EQ: five bands of seven steps, four presets |
+
+`main` carries the patches that are played. One still being built lives on its own
+branch until it is — the open draft pull requests are what is in progress.
+
+The written documentation lives at [Zoiatheca](https://github.com/sheoak/zoiatheca), which
+draws each patch as the pedal itself. What is in this repository is the patches and the
+notes that came with them.
+
+## Layout
+
+```
+patches/<name>/
+  <Patch>.bin        the patch, always 32768 bytes
+  README.md          a quick tour, and a link to the documentation
+  SCHEMA.md          the developer guide: how it is wired, when one has been written
+  VERSION            the build these files are
+```
+
+A patch with several builds keeps them side by side in the same directory.
+
+**The README is a tour, not a manual** — what the patch is, what the feet do, and where the
+documentation lives. The player-facing writing belongs on Zoiatheca, which draws the pedal
+itself; a second copy here only means one of the two is out of date.
+
+**`SCHEMA.md` is for whoever opens the patch**, not for whoever plays it: the wiring, the
+raw values, and the reasons a thing is built the way it is. That has no home on Zoiatheca,
+so it stays here.
+
+## Checks
+
+```bash
+python3 tools/check.py
+```
+
+Structure only — every directory has a `.bin`, every `.bin` is the right size, no loose files.
+Decoding the format needs the editing skill, which is not public, so CI does not try.
+
+## Licence
+
+MIT. Take them, change them, play them.
+
+## Working on a patch
+
+Each directory carries its own `VERSION` and `CHANGELOG.md`. A git tag would
+point at a commit, which here means the whole tree, so the number lives with the
+file instead — and shows up in the diff of the change that earned it.
+
+Commits are conventional: `fix(hierophant): keep the launcher lit`. The files a
+commit touches decide which patches move; its type decides how far.
+
+```
+brew install lefthook && lefthook install   # once, so the hooks run
+python3 tools/check.py                      # sizes, layout, versions
+python3 tools/release.py --check            # what a release would write
+python3 tools/release.py                    # write it
+```
+
+The number says a patch changed, never that it is good — that part is you and
+the pedal.
