@@ -8,7 +8,8 @@ over MIDI, and the three never drift apart.
 
 The front page is a grid: **one row per effect**, in the order the signal meets them, and
 the columns grouped by what the knob does. The on/off button is the first cell of each row;
-the last two columns are the input meters, red at the top.
+the last two columns are the input meters. The red segment should never light: it
+means the input is too hot and the patch starts to dirty.
 
 | | on/off | mix | tone / time | rate | width / depth | intensity |
 | --- | --- | --- | --- | --- | --- | --- |
